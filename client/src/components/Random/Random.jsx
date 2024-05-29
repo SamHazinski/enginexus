@@ -10,4 +10,4 @@ const Random = () => {
     );
 };
 
-export default Random;
+export default Random

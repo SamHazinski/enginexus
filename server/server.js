@@ -49,7 +49,7 @@ app.get('/api/recentGames', async (req, res) => {
       
       const processedData = data.games.map(game => ({
           gameId: game,
-      }));
+      }))
 
       res.setHeader('Content-Type', 'application/json'); // Set Content-Type header to JSON
       res.json(processedData); 

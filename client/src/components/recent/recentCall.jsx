@@ -20,7 +20,7 @@ const Recent = () => {
         } catch (error) {
             console.error('Error saving game:', error);
         }
-    };
+    }
 
 
     useEffect(() => {
