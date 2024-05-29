@@ -1,67 +1,42 @@
 import React, { useEffect, useState } from 'react';
 
-const Random = () => {
+const RandomCall = () => {
     const [data, setData] = useState(null);
 
- const handleFavorite = async (gameId) => {
-        try {
-            const response = await fetch('/api/saveGame', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ gameId })
-            });
-            if (response.ok) {
-                alert('Game saved to favorites!');
-            } else {
-                throw new Error('Failed to save game');
-            }
-        } catch (error) {
-            console.error('Error saving game:', error);
-        }
-    };
-
-
     useEffect(() => {
-        fetch('https://api.mobygames.com/v1/games/random')
-            .then(response => response.json())
-            .then(recentData => {
-                setData(recentData.results);
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/randomGames');
+                if (response.ok) {
+                    const jsonData = await response.json();
+                    setData(jsonData);
+                    res.setHeader('Content-Type', 'application/json'); // Set Content-Type header to JSON
+                } else {
+                    throw new Error('Failed to fetch data');
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
-              
-                Promise.all(recentData.results.map(game =>
-                    fetch(`https://api.mobygames.com/v1/games/${game.id}`)
-                        .then(response => response.json())
-                        .then(gameDetails => {
-                            
-                            setData(prevData => ({
-                                ...prevData,
-                                [game.id]: gameDetails.name
-                            }));
-                        })
-                        .catch(error => console.error('Error fetching game details:', error))
-                ));
-            })
-            .catch(error => console.error('Error fetching recent games:', error));
+        fetchData();
     }, []);
 
     return (
         <div>
-        {data ? (
-            <div>
-                {Object.entries(data).map(([gameId, gameName]) => (
-                    <div key={gameId}>
-                        {gameName}
-                        <button onClick={() => handleFavorite(gameId)}>Favorite</button>
-                    </div>
-                ))}
-            </div>
-        ) : (
-            <p>Loading...</p>
-        )}
-    </div>
+            {data ? (
+                <div>
+                    {data.map(({ gameId }) => (
+                        <div key={gameId}>
+                           
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
     );
 };
 
-export default Random;
+export default RandomCall;
