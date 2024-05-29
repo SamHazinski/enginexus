@@ -1,21 +1,19 @@
 import React from "react";
 import styles from "./Home.module.css";
-import { getImageUrl } from "../../utils";
-import logo from '../../assets/image/logo.png';
+import logo from "../../assets/image/logo.png";
 
-import { Link } from "react-router-dom";
+ const Home = () => {
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
 
-export const Home = () => {
   return (
     <div className={styles.homepage}>
       <div className="container justify-content-center align-items-center ">
         <div className={`row justify-content-center align-items-center `}>
           <div className="col-md-3 col-lg-2">
-            <img
-              src={logo}
-              alt="EngiNexus Logo"
-              className={styles.logoImg}
-            />
+            <img src={logo} alt="EngiNexus Logo" className={styles.logoImg} />
           </div>
         </div>
 
@@ -33,7 +31,7 @@ export const Home = () => {
               EngiNexus
             </h1>
             <p
-              className=" text-white text-center mb-5 animate"
+              className="text-white text-center mb-5 animate"
               data-toggle="animation"
               data-animation="fadeUp"
               data-animation-order="2"
@@ -61,7 +59,9 @@ export const Home = () => {
                   <a href="#">Contact</a>
                 </li>
                 <li>
-                  <a href="#">Login/Register</a>
+                  <a href="#" onClick={handleLogout}>
+                    Logout
+                  </a>
                 </li>
               </ul>
             </nav>
@@ -71,3 +71,4 @@ export const Home = () => {
     </div>
   );
 };
+export default Home;

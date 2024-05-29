@@ -1,17 +1,24 @@
-const express = require("express");
-const path = require("path");
-const db = require("./config/connection");
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const authRoutes = require('./routes/auth');
 
-// Comment out this code once you have built out queries and mutations in the client folder
-//const routes = require('./routes');
-
-const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
+// Middleware
 app.use(express.json());
+app.use(cors());
 
+// Routes
+app.use('/api/auth', authRoutes);
 
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/authapp', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error(err));
 
 app.post('/api/saveGame', async (req, res) => {
   const { gameId } = req.body;
@@ -19,14 +26,5 @@ app.post('/api/saveGame', async (req, res) => {
   res.json({ message: 'Game saved successfully' });
 });
 
-// Comment out this code once you have built out queries and mutations in the client folder
-//app.use(routes);
-
-// if we're in production, serve client/dist as static assets
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/dist")));
-}
-// Comment out this code once you have built out queries and mutations in the client folder
-db.once("open", () => {
-  app.listen(PORT, () => console.log(`Now listening on localhost: ${PORT}`));
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
