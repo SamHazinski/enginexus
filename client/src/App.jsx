@@ -1,14 +1,36 @@
+// import React, { useState, useEffect } from "react";
+// import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+// import { Home } from './components/Home/Home';
+// import { LoginRegister } from './components/LoginRegister/LoginRegister';
+// import { AuthState } from './context/AuthContext';
 
-import { Home } from './components/Home/Home'
-
-function App() {
+// function App() {
   
 
-  return (
-    <>
-      <Home />
-    </>
-  )
-}
+//   return (
+//     <div className="flex-column justify-center align-center min-100-vh bg-primary">
+//         <Outlet />
+//       </div>
+//     <AuthState>
+//       <Router>
+//         <Switch>
+//           <Route exact path="/" component={Home} />
+//           <Route exact path="/auth" component={LoginRegister} />
+//           <Redirect to="/" />
+//         </Switch>
+//       </Router>
+//     </AuthState>
+//   );
+// }
 
-export default App
+// export default App;
+
+import { Outlet } from 'react-router-dom';
+function App() {
+  return (
+      <div className="flex-column justify-center align-center min-100-vh bg-primary">
+        <Outlet />
+      </div>
+  );
+}
+export default App;
