@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import styles from "./LoginRegister.module.css";
 
@@ -17,7 +17,7 @@ const LoginRegister = () => {
     const endpoint = isRegistering ? "register" : "login";
     const payload = isRegistering
       ? { username, email, password }
-      : { email, password };
+      : { username, password };
 
     try {
       const response = await fetch(`https://example.com/api/${endpoint}`, {
@@ -54,13 +54,13 @@ const LoginRegister = () => {
           <h1>Login</h1>
           <div className={styles.inputBox}>
             <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
-            <FaEnvelope className={styles.icon} />
+            <FaUser className={styles.icon} />
           </div>
           <div className={styles.inputBox}>
             <input
