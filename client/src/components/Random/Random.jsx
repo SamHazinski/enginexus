@@ -1,8 +1,13 @@
+import React from 'react';
+import RandomCall from './randomCall.jsx'; 
 
+const Random = () => {
+    return (
+        <div>
+            View 100 random games!
+            <RandomCall />
+        </div>
+    );
+};
 
- const Random = () => {
-  return (
-    <div>Random</div>
-  )
-}
 export default Random;
