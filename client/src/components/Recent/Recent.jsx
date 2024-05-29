@@ -1,8 +1,13 @@
+import React from 'react';
+import RecentCall from './recentCall.jsx'; 
 
+const Recent = () => {
+    return (
+        <div>
+            View 100 random games!
+            <RecentCall />
+        </div>
+    );
+};
 
- const Recent = () => {
-  return (
-    <div>Recent</div>
-  )
-}
-export default Recent;
+export default Recent
