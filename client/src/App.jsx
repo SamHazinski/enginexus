@@ -1,4 +1,4 @@
-// import React, { useState, useEffect } from "react";
+//import React, { useState, useEffect } from "react";
 // import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 // import { Home } from './components/Home/Home';
 // import { LoginRegister } from './components/LoginRegister/LoginRegister';
@@ -24,13 +24,11 @@
 // }
 
 // export default App;
-
+// import styles from './App.module.css';
 import { Outlet } from 'react-router-dom';
 function App() {
   return (
-      <div className="flex-column justify-center align-center min-100-vh bg-primary">
-        <Outlet />
-      </div>
-  );
+              <Outlet />
+  )
 }
 export default App;

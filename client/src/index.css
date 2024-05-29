@@ -12,9 +12,9 @@ display: flex;
 justify-content: center;
 align-items: center;
 min-height: 100vh;
-background:url("./assets/image/homepage-bg.jpg") no-repeat;
+/* background:url("./assets/image/homepage-bg.jpg") no-repeat;
 background-size: cover;
-background-position: center;
+background-position: center; */
 
 }
 
