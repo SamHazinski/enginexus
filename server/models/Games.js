@@ -1,10 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const gameSchema = new Schema({
-    gameID: {type: String, required: true},
-    gameDescription: {type: String, required: true},
-    imageUrl: {type: String, required: true},
-    isFavorite: Boolean
+    game_id: {type: String, required: true},
+    moby_url: {type: String, required: true},
+    title: {type: String, required: true},
+    isFavorite: {type: Boolean, default: false}
 });
 
 const Game = model('game', gameSchema);
