@@ -47,20 +47,20 @@ import logo from "../../assets/image/logo.png";
             <nav className={styles.navbar}>
               <ul className={styles.menuItems}>
                 <li>
-                  <a href="#">Profile</a>
+                  <a href="/profile">Profile</a>
                 </li>
                 <li>
-                  <a href="#">Feed</a>
+                  <a href="/feed">Feed</a>
                 </li>
                 <li>
-                  <a href="#">About</a>
+                  <a href="/about">About</a>
                 </li>
                 <li>
-                  <a href="#">Contact</a>
+                  <a href="/contact">Contact</a>
                 </li>
                 <li>
-                  <a href="#" onClick={handleLogout}>
-                    Logout
+                  <a href="/login" onClick={handleLogout}>
+                    Login
                   </a>
                 </li>
               </ul>
