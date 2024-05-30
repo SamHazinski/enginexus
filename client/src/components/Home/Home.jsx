@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Home.module.css";
 import logo from "../../assets/image/logo.png";
 
@@ -10,6 +9,7 @@ import logo from "../../assets/image/logo.png";
 
   return (
     <div className={styles.homepage}>
+      
       <div className="container justify-content-center align-items-center ">
         <div className={`row justify-content-center align-items-center `}>
           <div className="col-md-3 col-lg-2">

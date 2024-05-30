@@ -9,6 +9,9 @@ router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
 
   try {
+    if(!username||!email|| !password){
+      return res.status(400).json({msg:'Please enter all the fields'});
+    }
     let user = await User.findOne({ email });
     if (user) {
       return res.status(400).json({ msg: 'User already exists' });
@@ -20,7 +23,7 @@ router.post('/register', async (req, res) => {
     const payload = { user: { id: user.id } };
     jwt.sign(payload, 'yourJWTSecret', { expiresIn: 360000 }, (err, token) => {
       if (err) throw err;
-      res.json({ token });
+      res.status(200).json({ status:'success', message: 'Registration successful', token });
     });
   } catch (err) {
     console.error(err.message);
@@ -29,10 +32,13 @@ router.post('/register', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
-    let user = await User.findOne({ email });
+    if(!username|| !password){
+      return res.status(400).json({msg:'Please enter all the fields'});
+    }
+    let user = await User.findOne({ username });
     if (!user) {
       return res.status(400).json({ msg: 'Invalid Credentials' });
     }
@@ -45,7 +51,7 @@ router.post('/login', async (req, res) => {
     const payload = { user: { id: user.id } };
     jwt.sign(payload, 'yourJWTSecret', { expiresIn: 360000 }, (err, token) => {
       if (err) throw err;
-      res.json({ token });
+      res.status(200).json({ status:'success', message: 'Login successful', token });
     });
   } catch (err) {
     console.error(err.message);

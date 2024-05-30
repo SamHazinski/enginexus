@@ -12,5 +12,7 @@ export default defineConfig({
     modules:{
       localsConvention:"camelCase",
     }
-  }
+  },optimizeDeps: {
+    exclude: ['dependency-name'],
+  },
 })

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import styles from "./LoginRegister.module.css";
+import { useNavigate  } from "react-router-dom";
 
 const LoginRegister = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isRegistering, setIsRegistering] = useState(false);
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const toggleForm = () => {
     setIsRegistering((prev) => !prev);
@@ -17,10 +20,10 @@ const LoginRegister = () => {
     const endpoint = isRegistering ? "register" : "login";
     const payload = isRegistering
       ? { username, email, password }
-      : { email, password };
+      : { username, password };
 
     try {
-      const response = await fetch(`https://example.com/api/${endpoint}`, {
+      const response = await fetch(`http://localhost:3001/api/auth/${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,14 +31,17 @@ const LoginRegister = () => {
         body: JSON.stringify(payload),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to fetch");
-      }
-
       const data = await response.json();
-      console.log(data);
+
+      if (response.ok) {
+        setMessage(data.message);
+        localStorage.setItem('token', data.token);
+        navigate('/profile'); // Redirect to profile page
+      } else {
+        setMessage(data.message);
+      }
     } catch (error) {
-      console.error("Error:", error);
+      setMessage('An error occurred. Please try again later.');
     }
   };
 
@@ -54,13 +60,13 @@ const LoginRegister = () => {
           <h1>Login</h1>
           <div className={styles.inputBox}>
             <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               required
             />
-            <FaEnvelope className={styles.icon} />
+            <FaUser className={styles.icon} />
           </div>
           <div className={styles.inputBox}>
             <input
@@ -80,9 +86,10 @@ const LoginRegister = () => {
             <a href="#">Forgot password?</a>
           </div>
           <button type="submit">Login</button>
+          {message && <p>{message}</p>}
           <div className={styles.registerLink}>
             <p>
-              Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
               <a href="#" onClick={toggleForm}>
                 Register
               </a>
