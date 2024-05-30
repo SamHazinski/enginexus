@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import styles from "./Navbar.module.css";
 import { getImageUrl } from "../../utils";
 
 import { Link } from "react-router-dom";
 
 
-export const Navbar = () => {
+ const Navbar = () => {
     const [menuOpen, setMenuOpen]= useState(false);
   return (
     <nav className={styles.navbar}>
@@ -41,3 +41,5 @@ export const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;
