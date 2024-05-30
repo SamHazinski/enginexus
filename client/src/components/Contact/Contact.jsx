@@ -2,7 +2,7 @@ import styles from "./Contact.module.css";
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../NavbarComponent/NavbarComponent";
 
 const Contact = () => {
   
@@ -69,7 +69,7 @@ const Contact = () => {
 
   return (
     <div className={`${styles.contactPage} container`}>
-        <Navbar />
+        <NavbarComponent />
       <div className="container justify-content-center align-items-center ">
     
 

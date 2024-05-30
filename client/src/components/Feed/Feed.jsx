@@ -1,4 +1,4 @@
-import Navbar from "../Navbar/Navbar";
+import NavbarComponent from "../NavbarComponent/NavbarComponent";
 import styles from "../Feed/Feed.module.css";
 import ProductCard from '../ProductCard/ProductCard';
 
@@ -29,19 +29,21 @@ const feeds = [
  const Feed = () => {
   return (
     <div className={styles.feedWrapper}>
-      <div className="container justify-content-center align-items-center ">
-        <div className={`row justify-content-center align-items-center `}>
-        <Navbar />
+      <div className="col-lg-12 col-md-8">
+      <div className="container">
+        <div className={`${styles.feedRow} row`}>
+        <NavbarComponent />
         </div>
-        <div className={`row justify-content-center align-items-center `}>
+        <div className={`row mt-4`}>
         <div className={styles.wrapperProduct}>
     <h1>Product List</h1>
-    <div className={styles.productList}>
+    <div className={styles.feedList}>
       {feeds.map(feed => (
         <ProductCard key={feed.id} product={feed} />
       ))}
     </div>
   </div>
+        </div>
         </div>
         </div>
         </div>

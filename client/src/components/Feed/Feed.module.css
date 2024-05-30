@@ -10,7 +10,7 @@
   padding: 20px;
 }
 
-.productList {
+.feedList {
   position: absolute;
   overflow: hidden;
   display: flex;

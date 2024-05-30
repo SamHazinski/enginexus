@@ -1,4 +1,4 @@
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../NavbarComponent/NavbarComponent";
 import styles from "../Profile/Profile.module.css";
 import ProductCard from '../ProductCard/ProductCard';
 
