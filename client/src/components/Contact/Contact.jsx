@@ -2,7 +2,7 @@ import styles from "./Contact.module.css";
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import emailjs from 'emailjs-com';
-import Navbar from "../NavbarComponent/NavbarComponent";
+import NavbarComponent from "../NavbarComponent/NavbarComponent";
 
 const Contact = () => {
   
@@ -68,13 +68,14 @@ const Contact = () => {
   };
 
   return (
-    <div className={`${styles.contactPage} container`}>
+    <div className={styles.contactPage} >
+     <div className="col-lg-12 col-md-8">
+      <div className="container">
+        <div className={`${styles.feedRow} row`}>
         <NavbarComponent />
-      <div className="container justify-content-center align-items-center ">
-    
-
-        <div className={`row justify-content-center align-items-center `}>
-    <div className='ContactForm'>
+        </div>
+        <div className={`row justify-content-center align-items-center col-12 mt-4`}>
+    <div className={`${styles.contactFormCont} ContactForm col-lg-6 justify-content-center align-items-center`}>
       <div className={`${styles.contactForm} container`}>
         <div className='row'>
           <div className='col-12 text-center'>
@@ -204,6 +205,7 @@ const Contact = () => {
           ></button>
         </div>
       )}
+    </div>
     </div>
     </div>
     </div>

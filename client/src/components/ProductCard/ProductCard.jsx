@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from  './ProductCard.module.css'; 
 
 const ProductCard = ({ product }) => {
@@ -7,6 +7,7 @@ const ProductCard = ({ product }) => {
       <img src={product.image} alt={product.name} className={styles.productImage} />
       <div className={styles.productDetails}>
         <h2>{product.name}</h2>
+        <p>Moby Score:</p>
         <p>{product.description}</p>
         <button className={styles.productButton}>Add to favorite</button>
       </div>

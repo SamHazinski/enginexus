@@ -6,15 +6,32 @@
     width: 100%;
     margin: 0px;
 }
+.contactFormCont{
+  position: relative;
+  width: 420px;
+  height: 450px;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  transition: height 0.2s ease;
+  top: 100px;
+  padding-bottom: 30px;
+}
 .contactForm{
-    margin-top: 100px;
+    margin-top: 20px;
     overflow: hidden;
 }
 .contactFormTxt{
     color: #fff;
 }
 form {
-    margin-top: 20px;
+  margin-top: 20px;
   }
   
   .formRow {
@@ -33,10 +50,9 @@ form {
   }
   
   .submitBtn {
-    padding: 15px 50px;
+    
     border-radius: 10px;
-    margin-bottom: 25px;
-    margin-top: 5px;
+    margin-top: 10px;
   }
   
   @media (max-width: 768px) {
