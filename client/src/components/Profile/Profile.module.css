@@ -8,7 +8,9 @@
   text-align: center;
   padding: 20px;
 }
-
+.wrapperProduct h1 {
+  color: #fff;
+}
 .productList {
   position: absolute;
   overflow: hidden;
