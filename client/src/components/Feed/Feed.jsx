@@ -1,6 +1,7 @@
 import NavbarComponent from "../NavbarComponent/NavbarComponent";
 import styles from "../Feed/Feed.module.css";
 import ProductCard from '../ProductCard/ProductCard';
+import ButtonRowComponent from "../ButtonRowComponent/ButtonRowComponent";
 
 const feeds = [
   {
@@ -35,8 +36,9 @@ const feeds = [
         <NavbarComponent />
         </div>
         <div className={`row mt-4`}>
+          <ButtonRowComponent />
         <div className={styles.wrapperProduct}>
-    <h1>Product List</h1>
+    <h1>Feed List</h1>
     <div className={styles.feedList}>
       {feeds.map(feed => (
         <ProductCard key={feed.id} product={feed} />

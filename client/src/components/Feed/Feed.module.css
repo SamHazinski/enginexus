@@ -9,7 +9,9 @@
   text-align: center;
   padding: 20px;
 }
-
+.wrapperProduct h1{
+    color: #fff;
+}
 .feedList {
   position: absolute;
   overflow: hidden;
