@@ -10,7 +10,7 @@ const RandomCall = () => {
                 if (response.ok) {
                     const jsonData = await response.json();
                     setData(jsonData);
-                    res.setHeader('Content-Type', 'application/json'); // Set Content-Type header to JSON
+                    console.log(jsonData)
                 } else {
                     throw new Error('Failed to fetch data');
                 }
