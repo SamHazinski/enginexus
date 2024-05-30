@@ -1,17 +1,17 @@
-import React from 'react';
+
 import styles from "./About.module.css";
-import Navbar from "../Navbar/Navbar";
+import NavbarComponent from "../NavbarComponent/NavbarComponent";
 const About = () => {
   return (
     <div className={styles.aboutWrapper}>
-      <Navbar />
+      <NavbarComponent />
       <div className="container justify-content-center align-items-center ">
         <div className={`row justify-content-center align-items-center `}>
         
     <div className={styles.about}>
       <h1>About Me</h1>
       <p>
-        Hi, I'm xxxxxx. I'm a software engineer with a passion for web development and open-source projects. I have experience in building scalable web applications and enjoy working with the latest web technologies.
+        Hi, I&apos;m xxxxxx. I&apos;m a software engineer with a passion for web development and open-source projects. I have experience in building scalable web applications and enjoy working with the latest web technologies.
       </p>
       <img src="https://via.placeholder.com/150" alt="John Doe" className={styles.aboutPhoto}/>
       <h2>Skills</h2>
