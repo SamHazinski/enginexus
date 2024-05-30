@@ -4,3 +4,15 @@
   height: 100vh;
   overflow: hidden;
 }
+.wrapperProduct {
+  text-align: center;
+  padding: 20px;
+}
+
+.productList {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

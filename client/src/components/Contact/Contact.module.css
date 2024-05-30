@@ -1,0 +1,47 @@
+.contactPage{
+    background: url(../../assets/image/homepage-bg.jpg) no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    width: 100%;
+    margin: 0px;
+}
+.contactForm{
+    margin-top: 100px;
+    overflow: hidden;
+}
+.contactFormTxt{
+    color: #fff;
+}
+form {
+    margin-top: 20px;
+  }
+  
+  .formRow {
+    margin: 10px 0 20px 0;
+  }
+  
+  .formInput {
+    padding: 15px 10px;
+  }
+  
+  .errorMessage {
+    color: #f45532;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .submitBtn {
+    padding: 15px 50px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    margin-top: 5px;
+  }
+  
+  @media (max-width: 768px) {
+    .submit-message {
+      width: 125px;
+      margin-left: 200px;
+    }
+  }

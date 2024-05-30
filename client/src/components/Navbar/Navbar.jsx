@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
  const Navbar = () => {
     const [menuOpen, setMenuOpen]= useState(false);
   return (
+    <div className="container justify-content-center align-items-center">
+      <div className={`row justify-content-center align-items-center `}>
+        <div className={styles.navbarContainer}>
     <nav className={styles.navbar}>
       <Link className={styles.title}  to="/">
         EngiNexus
@@ -39,6 +42,9 @@ import { Link } from "react-router-dom";
         </ul>
       </div>
     </nav>
+    </div>
+    </div>
+    </div>
   );
 };
 
