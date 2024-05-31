@@ -28,7 +28,7 @@ const RandomCall = () => {
                 <div>
                     {data.map(({ gameId }) => (
                         <div key={gameId}>
-                           
+                           `${data}`
                         </div>
                     ))}
                 </div>
