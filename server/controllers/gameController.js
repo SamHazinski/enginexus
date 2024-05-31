@@ -17,5 +17,10 @@ module.exports = {
             res.status(500).json(error);
           }
     },
+   async cloneFavorite(req, res){
+    const fav = await Game.findOne({_id: params.id});
+    const newFav = Favorite.create({fav});
+    res.status(200).json(newFav);
+   },
    
 }
