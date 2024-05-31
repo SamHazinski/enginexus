@@ -4,7 +4,9 @@ const path = require("path");
 const fetch = require("node-fetch");
 const connectDB = require("./config/connection");
 const authRoutes = require("./routes/auth");
-const {Game, Favorite} = require('./models');
+// const {Game, Favorite} = require('./models');
+const {createFavorite, allSaved} = require('./controllers/savedGameController');
+const {newGame, allGames} = require('./controllers/gameController')
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -88,42 +90,11 @@ app.get("/api/recentGames", async (req, res) => {
   }
 });
 
-app.post("/api/saveGame", async (req, res) => {
-  try {
-    const { gameId } = req.body;
-    // Save the game favorite to the database
-    res.status(200).json({ message: "Game saved to favorites!" });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to save game" });
-  }
-});
 
-
-
-app.get('/api/allGames', async (req, res) => {
-  try {
-    const allGames = await Game.find({});
-    if (!allGames){
-      return res.status(400).json({message: "No games found"});
-    }
-    res.status(200).json(allGames);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-});
-
-app.get('/api/allSaved', async (req, res) => {
-  try {
-    const allSaved = await Favorite.find({});
-    if (!allSaved){
-      return res.status(400).json({message: "No saved games found"});
-    }
-    res.status(200).json(allSaved);
-  } catch (error) {
-    res.status(500).json(error);
-  }
-})
-
+app.get('/api/allGames', allGames);
+app.get('/api/allSaved', allSaved)
+app.post('/api/saveGame', createFavorite)
+app.post('/api/newGame', newGame)
 
 // Connect to MongoDB and start the server
 connectDB()
