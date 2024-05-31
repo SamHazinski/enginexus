@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { User, Game } = require('../models');
+const { User, Game, Favorite } = require('../models');
 const connectDB = require('../config/connection');
 
 const seedUsers = async () => {
@@ -22,6 +22,11 @@ const seedUsers = async () => {
       { game_id: 2, moby_url: "http://www.mobygames.com/game/who-framed-roger-rabbit", title: "Who Framed Roger Rabbit", isFavorite: true },
     ];
 
+    const saved = [
+      { game_id: 3, moby_url: "http://www.mobygames.com/game/wing-commander", title: "Wing Commander", isFavorite: false },
+      { game_id: 4, moby_url: "http://www.mobygames.com/game/sid-meiers-alpha-centauri", title: "Sid Meier's Alpha Centauri", isFavorite: true },
+    ]
+
     for (const gameData of games) {
       const game = new Game(gameData);
       await game.save();
@@ -30,6 +35,11 @@ const seedUsers = async () => {
     for (const userData of users) {
       const user = new User(userData);
       await user.save();
+    }
+
+    for (const favData of saved) {
+      const fav = new Favorite(favData);
+      await fav.save();
     }
 
     console.log('Seeding completed.');

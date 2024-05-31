@@ -4,7 +4,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 const connectDB = require("./config/connection");
 const authRoutes = require("./routes/auth");
-const {Game} = require('./models');
+const {Game, Favorite} = require('./models');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -110,7 +110,20 @@ app.get('/api/allGames', async (req, res) => {
   } catch (error) {
     res.status(500).json(error);
   }
+});
+
+app.get('/api/allSaved', async (req, res) => {
+  try {
+    const allSaved = await Favorite.find({});
+    if (!allSaved){
+      return res.status(400).json({message: "No saved games found"});
+    }
+    res.status(200).json(allSaved);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 })
+
 
 // Connect to MongoDB and start the server
 connectDB()
