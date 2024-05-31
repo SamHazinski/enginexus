@@ -4,7 +4,7 @@ const path = require("path");
 const fetch = require("node-fetch");
 const connectDB = require("./config/connection");
 const authRoutes = require("./routes/auth");
-
+const {Game} = require('./models');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -97,6 +97,20 @@ app.post("/api/saveGame", async (req, res) => {
     res.status(500).json({ error: "Failed to save game" });
   }
 });
+
+
+
+app.get('/api/allGames', async (req, res) => {
+  try {
+    const allGames = await Game.find({});
+    if (!allGames){
+      return res.status(400).json({message: "No games found"});
+    }
+    res.status(200).json(allGames);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+})
 
 // Connect to MongoDB and start the server
 connectDB()
