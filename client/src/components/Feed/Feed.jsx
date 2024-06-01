@@ -32,30 +32,28 @@ import search from "../../utils/allGamesUtil";
 // ];
 
 const Feed = () => {
-  //   const [feeds, setFeeds] = useState([
-  //     {
-  //       game_id: 1,
-  //       title: "Mock Title",
-  //       moby_url: "https://example.com",
-  //       isFavorite: true,
-  //       image: "https://via.placeholder.com/150",
-  //     },
-  //   ]);
 
   const [results, setResults] = useState([]);
 
   // Method to get search results and set state
-  const searchGiphy = async () => {
-    const data  = await search();
+  const searchGames = async () => {
+    const response  = await search();
+    const data = await response.json()
     console.log(data);
 
-    setResults(data.data);
-    // console.log(data.data);
+    setResults(data);
+    
+    console.log(data.data);
 
   };
 
-  searchGiphy();
-  //console.log(results);
+  useEffect(() => {
+    searchGames();
+  }, []); // Empty dependency array ensures this effect runs only once after the initial render
+  
+  useEffect(() => {
+    console.log(results);
+  }, [results]); // Log results whenever it changes
 
   return (
     <div className={styles.feedWrapper}>
