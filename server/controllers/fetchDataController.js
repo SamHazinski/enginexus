@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
-
+require('dotenv').config();
+const apiKey = process.env.API_KEY
 function delay(t) {
   return new Promise((resolve) => setTimeout(resolve, t));
 }
@@ -14,7 +15,7 @@ const fetchData = async () => {
   while (retries < MAX_RETRIES) {
     try {
       const response = await fetch(
-        "https://api.mobygames.com/v1/games/random?api_key=moby_EE6yuHjZex3HiMBaAFqkKl0dyH6&limit=10"
+        `https://api.mobygames.com/v1/games/random?api_key=${apiKey}&limit=10`
       );
       if (!response.ok) {
         throw new Error(
@@ -32,7 +33,7 @@ const fetchData = async () => {
       for (const gameId of gameIds) {
         await delay(1000);
         const gameResponse = await fetch(
-          `https://api.mobygames.com/v1/games/${gameId}?api_key=moby_EE6yuHjZex3HiMBaAFqkKl0dyH6&limit=10`
+          `https://api.mobygames.com/v1/games/${gameId}?api_key=${apiKey}&limit=10`
         );
         if (!gameResponse.ok) {
           throw new Error(

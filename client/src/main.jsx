@@ -7,6 +7,7 @@ import Profile from './components/Profile/Profile.jsx';
 import Error from './components/Error/Error.jsx';
 import About from './components/About/About.jsx';
 import Feed from './components/Feed/Feed.jsx';
+
 import Contact from './components/Contact/Contact.jsx';
 const router = createBrowserRouter([
   {

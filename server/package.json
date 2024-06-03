@@ -18,7 +18,8 @@
         "express": "^4.19.2",
         "jsonwebtoken": "^9.0.2",
         "mongoose": "^8.0.0",
-        "prop-types": "^15.8.1"
+        "prop-types": "^15.8.1",
+        "dotenv": "^8.2.0"
     },
     "devDependencies": {
         "nodemon": "^2.0.6"
