@@ -21,7 +21,7 @@ const About = () => {
       <p>
       Hi, we&apos;re a dedicated full stack developer team with a deep passion for exploring, learning, and mastering new technologies through creating applications. Our expertise lies in developing highly scalable web applications, and we all thoroughly enjoy staying at the forefront of the latest web technologies. This application was created using the MERN stack to deepen our knowledge.
       </p>
-      <img src="https://via.placeholder.com/150" alt="" className={styles.aboutPhoto}/>
+      {/* <img src="https://via.placeholder.com/150" alt="" className={styles.aboutPhoto}/> */}
       <h2>Technology Used</h2>
       <ul>
         <li>MongoDB</li>
