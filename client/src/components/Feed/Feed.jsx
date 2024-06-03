@@ -1,7 +1,7 @@
 import NavbarComponent from "../NavbarComponent/NavbarComponent";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import axios from "axios"; // Assuming you're using axios for HTTP requests
+import axios from "axios"; 
 import styles from "../Feed/Feed.module.css";
 
 const Feed = () => {
@@ -18,12 +18,13 @@ const Feed = () => {
 
   useEffect(() => {
     fetchLatestGames();
-  }, []); // Fetch data when the component mounts
+  }, []); 
 
   const handleRefresh = async () => {
     try {
       await axios.post('/api/games/refresh');
-      fetchLatestGames(); // Fetch data again after refreshing
+      // window.location.reload();
+      await fetchLatestGames();
     } catch (error) {
       console.error('Error refreshing data:', error);
     }

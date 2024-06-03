@@ -5,7 +5,6 @@
 // import { AuthState } from './context/AuthContext';
 
 // function App() {
-  
 
 //   return (
 //     <div className="flex-column justify-center align-center min-100-vh bg-primary">
@@ -25,10 +24,8 @@
 
 // export default App;
 // import styles from './App.module.css';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 function App() {
-  return (
-              <Outlet />
-  )
+  return <Outlet />;
 }
 export default App;
