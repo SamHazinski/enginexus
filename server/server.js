@@ -37,6 +37,17 @@ app.get('/api/games/latest', async (req, res) => {
   }
 });
 
+// app.post('/api/games/refresh', async (req, res) => {
+//   try {
+//     const latestGames = await Game.find().sort({ createdAt: -1 }).limit(9);
+//     res.json(latestGames);
+//     res.status(200).json({ message: 'Data refreshed successfully' });
+//   } catch (error) {
+//     console.error('Error refreshing data:', error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
 // app.get('/api/game/:id', cloneFavorite);
 app.get('/api/allGames', allGames);
 app.get('/api/allSaved', allSaved);
@@ -53,8 +64,10 @@ connectDB()
         data.forEach(item => {
           const product = new Game({
             game_id: item.game_id,
+            moby_score: item.moby_score,
             moby_url: item.moby_url,
             title: item.title,
+            thumbnail: item.sample_cover.thumbnail_image
           });
           product.save().then(() => {
             console.log('Product saved to MongoDB');

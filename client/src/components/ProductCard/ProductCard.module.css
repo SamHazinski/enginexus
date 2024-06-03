@@ -53,3 +53,13 @@
   cursor: pointer;
   transition: background-color 0.2s;
 }
+
+.productDetails {
+  /* max-width: 150px; Set the maximum width of the container */
+   overflow: hidden; 
+  text-overflow: ellipsis; /* Display an ellipsis (...) for overflowed text */
+}
+
+.thumbnailContainer {
+  max-width: 100%; /* Ensure the thumbnail image does not overflow its container */
+}
