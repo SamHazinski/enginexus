@@ -1,7 +1,7 @@
 import NavbarComponent from "../NavbarComponent/NavbarComponent";
 import React, { useEffect, useState } from "react";
 import ProductCard from "../ProductCard/ProductCard";
-import axios from "axios"; 
+import axios from "axios";
 import styles from "../Feed/Feed.module.css";
 
 const Feed = () => {
@@ -9,24 +9,24 @@ const Feed = () => {
 
   const fetchLatestGames = async () => {
     try {
-      const response = await axios.get('/api/games/latest');
+      const response = await axios.get("/api/games/latest");
       setLatestGames(response.data);
     } catch (error) {
-      console.error('Error fetching latest games:', error);
+      console.error("Error fetching latest games:", error);
     }
   };
 
   useEffect(() => {
     fetchLatestGames();
-  }, []); 
+  }, []);
 
   const handleRefresh = async () => {
     try {
-      await axios.post('/api/games/refresh');
-      // window.location.reload();
+      await axios.post("/api/games/refresh");
       await fetchLatestGames();
+      window.location.reload();
     } catch (error) {
-      console.error('Error refreshing data:', error);
+      console.error("Error refreshing data:", error);
     }
   };
 
