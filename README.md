@@ -17,7 +17,7 @@ A RESTful API for fetching and saving game data.
 
 ## Description
 
-This is a Node.js/Express.js API server that interacts with the MobyGames API to fetch game data and provides endpoints for retrieving random games, recent games, and saving games to favorites.
+This is a Node.js/Express.js API server that interacts with the MobyGames API to fetch game data and provides endpoints for retrieving random games, recent games, and saving games to favorites. Using data from the MobyGames api, this application renders the recieved data onto the dynamically built react pages. 
 
 ## Deployment
 
@@ -72,6 +72,11 @@ To run the enginexus application, follow these steps to install the required dep
 2. cd enginexus
 
 3. Run npm install to install dependencies.
+
+
+## Usage
+
+Navitage to the login page and login/register if you're a first time user. After logging in, proceed to the feed page. View the games along the feed, click on a provided link on any game that sounds interesting to navigate to the MobyGames website to learn more about your intended game. Click on the add to favorites button to save the games to view later on your profile page.
 
 ## License
 
