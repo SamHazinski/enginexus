@@ -6,7 +6,7 @@ const connectDB = require("./config/connection");
 const authRoutes = require("./routes/auth");
 // const {Game, Favorite} = require('./models');
 const {createFavorite, allSaved} = require('./controllers/savedGameController');
-const {newGame, allGames} = require('./controllers/gameController')
+const {newGame, allGames, cloneFavorite} = require('./controllers/gameController')
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -90,11 +90,11 @@ app.get("/api/recentGames", async (req, res) => {
   }
 });
 
-
+// app.get('/api/game/:id', cloneFavorite);
 app.get('/api/allGames', allGames);
-app.get('/api/allSaved', allSaved)
-app.post('/api/saveGame', createFavorite)
-app.post('/api/newGame', newGame)
+app.get('/api/allSaved', allSaved);
+app.post('/api/saveGame', createFavorite);
+app.post('/api/newGame', newGame);
 
 // Connect to MongoDB and start the server
 connectDB()
