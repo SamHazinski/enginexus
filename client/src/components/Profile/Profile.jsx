@@ -1,39 +1,25 @@
 import NavbarComponent from "../NavbarComponent/NavbarComponent";
 import styles from "../Profile/Profile.module.css";
-import ProductCard from "../ProductCard/ProductCard";
-
-const products = [
-  {
-    id: 1,
-    name: "Product 1",
-    description: "This is a great product.",
-    price: 29.99,
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 2,
-    name: "Product 2",
-    description: "This product is even better!",
-    price: 49.99,
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 3,
-    name: "Product 3",
-    description: "You will love this product.",
-    price: 19.99,
-    image: "https://via.placeholder.com/150",
-  },
-  {
-    id: 4,
-    name: "Product 4",
-    description: "You will love this product.",
-    price: 19.99,
-    image: "https://via.placeholder.com/150",
-  },
-];
+import SavedCard from "../ProductCard/savedCards";
+import axios from "axios"; 
+import React, { useEffect, useState } from "react";
 
 const Profile = () => {
+  const [savedGames, setSavedGames] = useState ([]);
+
+  const fetchSavedGames = async () => {
+    try {
+      const response = await axios.get('/api/allSaved');
+      setSavedGames(response.data);
+    } catch (error) {
+      console.error('Error fetching saved games:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchSavedGames()
+  }, [])
+
   return (
     <div className={styles.profileWrapper}>
       <div className="col-lg-12 col-md-8">
@@ -43,10 +29,10 @@ const Profile = () => {
           </div>
           <div className={`row mt-4`}>
             <div className={styles.wrapperProduct}>
-              <h1>Product List</h1>
-              <div className={styles.productList}>
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
+              <h1>Saved Games</h1>
+              <div className={'d-flex flex-wrap justify-content-center'}>
+                {savedGames.map((game) => (
+                  <SavedCard key={game._id} product={game} />
                 ))}
               </div>
             </div>

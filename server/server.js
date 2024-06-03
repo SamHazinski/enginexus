@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const connectDB = require("./config/connection");
-const updateDB = require('./controllers/updateDB')
+const updateMongoDB = require('./controllers/updateDB')
 const authRoutes = require("./routes/auth");
 const fetchData = require("./controllers/fetchDataController");
 // const refreshDB = require("./controllers/refreshDbController");
@@ -10,6 +10,7 @@ const fetchData = require("./controllers/fetchDataController");
 const {
   createFavorite,
   allSaved,
+  deleteGame,
 } = require("./controllers/savedGameController");
 const {
   newGame,
@@ -51,7 +52,7 @@ app.get("/api/games/latest", async (req, res) => {
 // refreshes the database with 10 new random games
 app.post("/api/games/refresh", async (req, res) => {
   try {
-   const latestGames = await updateDB();
+   const latestGames = await updateMongoDB();
     console.log("Data refreshed successfully");
     res.status(200).json({ message: "Data refreshed successfully", latestGames });
   } catch (error) {
@@ -65,6 +66,7 @@ app.get("/api/allGames", allGames);
 app.get("/api/allSaved", allSaved);
 app.post("/api/saveGame", createFavorite);
 app.post("/api/newGame", newGame);
+app.delete("/api/deleteGame/:id", deleteGame);
 
 // Connect to MongoDB and start the server
 connectDB()

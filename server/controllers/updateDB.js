@@ -25,12 +25,11 @@ const updateMongoDB = async () => {
         });
         await product.save(); 
         console.log('Product saved to MongoDB:', product);
-        await delay(10000);
+        await delay(1000);
       }
     } else {
       console.error('Data is not an array');
     }
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   } catch (error) {
     console.error('Error updating MongoDB:', error);
     process.exit(1);
