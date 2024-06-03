@@ -5,7 +5,7 @@ function delay(t) {
 }
 
 const MAX_RETRIES = 3;
-const BASE_DELAY = 1000; // Initial delay in milliseconds
+const BASE_DELAY = 1000;
 
 const fetchData = async () => {
   let retries = 0;
@@ -22,12 +22,11 @@ const fetchData = async () => {
         );
       }
       const data = await response.json();
-      console.log("Full Data:", data); // Log the full data structure
-      const games = data.games; // Access the 'games' array
-      console.log("Games Array:", games); // Log the 'games' array
+      console.log("Full Data:", data);
+      const games = data.games;
+      console.log("Games Array:", games);
       const gameIds = games.map((game) => game);
-      console.log("Game IDs:", gameIds); // Log the extracted game IDs
-      // Extract game IDs from data
+      console.log("Game IDs:", gameIds);
 
       const gamesData = [];
       for (const gameId of gameIds) {
@@ -44,12 +43,12 @@ const fetchData = async () => {
         gamesData.push(gameData);
       }
       await delay(delayTime);
-      delayTime *= 2; // Exponential backoff
+      delayTime *= 2;
       retries++;
-      return gamesData; // Return the fetched and processed data
+      return gamesData;
     } catch (error) {
       console.error("Error fetching data:", error);
-      throw error; // Rethrow the error to indicate failure
+      throw error;
     }
   }
   throw new Error("Maximum number of retries exceeded");
