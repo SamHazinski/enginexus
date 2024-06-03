@@ -38,7 +38,7 @@ const Feed = () => {
   // Method to get search results and set state
   const searchGames = async () => {
     const response  = await search();
-    const data = await response.json()
+    const data = await response.json();
     console.log(data);
 
     setResults(data);

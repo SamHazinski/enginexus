@@ -4,9 +4,11 @@ const path = require("path");
 const fetch = require("node-fetch");
 const connectDB = require("./config/connection");
 const authRoutes = require("./routes/auth");
+const fetchData = require('./controllers/fetchDataController');
 // const {Game, Favorite} = require('./models');
 const {createFavorite, allSaved} = require('./controllers/savedGameController');
 const {newGame, allGames, cloneFavorite} = require('./controllers/gameController')
+const { Game } = require('./models')
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -99,6 +101,24 @@ app.post('/api/newGame', newGame);
 // Connect to MongoDB and start the server
 connectDB()
   .then(() => {
+    console.log('Connected to MongoDB');
+    fetchData().then(data => {
+      console.log(data)
+      if (Array.isArray(data)) {
+        data.forEach(item => {
+          const product = new Game({
+            game_id: item.game_id,
+            moby_url: item.moby_url,
+            title: item.title,
+          });
+          product.save().then(() => {
+            console.log('Product saved to MongoDB');
+          }).catch(error => {
+            console.error('Error saving product:', error);
+          });
+        });
+      }
+    });
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   })
   .catch((err) => {
