@@ -18,8 +18,8 @@ import Profile from './components/Profile/Profile.jsx';
 import Error from './components/Error/Error.jsx';
 import About from './components/About/About.jsx';
 import Feed from './components/Feed/Feed.jsx';
-import Random from './components/Random/Random.jsx';
-import Recent from './components/Recent/Recent.jsx';
+import Random from './components/random/Random.jsx';
+import Recent from './components/recent/Recent.jsx';
 import Contact from './components/Contact/Contact.jsx';
 const router = createBrowserRouter([
   {
