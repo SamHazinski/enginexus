@@ -20,14 +20,14 @@ const Feed = () => {
     fetchLatestGames();
   }, []); // Fetch data when the component mounts
 
-  // const handleRefresh = async () => {
-  //   try {
-  //     await axios.post('/api/games/refresh');
-  //     fetchLatestGames(); // Fetch data again after refreshing
-  //   } catch (error) {
-  //     console.error('Error refreshing data:', error);
-  //   }
-  // };
+  const handleRefresh = async () => {
+    try {
+      await axios.post('/api/games/refresh');
+      fetchLatestGames(); // Fetch data again after refreshing
+    } catch (error) {
+      console.error('Error refreshing data:', error);
+    }
+  };
 
   return (
     <div className={styles.feedWrapper}>
@@ -39,7 +39,7 @@ const Feed = () => {
           <div className={`row mt-4`}>
             <div className={styles.wrapperProduct}>
               <h1>Games</h1>
-              {/* <button onClick={handleRefresh}>Refresh</button> Refresh button */}
+              <button onClick={handleRefresh}>Refresh</button>
               <div className={`d-flex flex-wrap justify-content-center`}>
                 {latestGames.map((game) => (
                   <ProductCard key={game._id} product={game} />
