@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const connectDB = require("./config/connection");
-const updateMongoDB = require('./controllers/updateDB')
+const updateMongoDB = require("./controllers/updateDB");
 const authRoutes = require("./routes/auth");
 const fetchData = require("./controllers/fetchDataController");
 // const refreshDB = require("./controllers/refreshDbController");
@@ -52,9 +52,11 @@ app.get("/api/games/latest", async (req, res) => {
 // refreshes the database with 10 new random games
 app.post("/api/games/refresh", async (req, res) => {
   try {
-   const latestGames = await updateMongoDB();
+    const latestGames = await updateMongoDB();
     console.log("Data refreshed successfully");
-    res.status(200).json({ message: "Data refreshed successfully", latestGames });
+    res
+      .status(200)
+      .json({ message: "Data refreshed successfully", latestGames });
   } catch (error) {
     console.error("Error refreshing data:", error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -100,5 +102,3 @@ connectDB()
     console.error("Failed to connect to MongoDB", err);
     process.exit(1);
   });
-
-
